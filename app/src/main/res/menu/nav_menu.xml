@@ -3,9 +3,44 @@
     <group
         android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_prime"
-            android:icon="@drawable/cart_icon"
-            android:title="Prime"/>
+            android:id="@+id/nav_cell"
+            android:icon="@drawable/cell_icon"
+            android:title="Telefones e Celulares"/>
+
+        <item
+            android:id="@+id/nav_eletros"
+            android:icon="@drawable/refrigerator_icon"
+            android:title="Eletrodomésticos"/>
+
+        <item
+            android:id="@+id/nav_tv"
+            android:icon="@drawable/tv_icon"
+            android:title="Tv e Vídeo"/>
+
+        <item
+            android:id="@+id/nav_info"
+            android:icon="@drawable/mouse_icon"
+            android:title="Informática"/>
+
+        <item
+            android:id="@+id/nav_vetila"
+            android:icon="@drawable/snow_icon"
+            android:title="Ar e Ventilação"/>
+
+        <item
+            android:id="@+id/nav_moveis"
+            android:icon="@drawable/bed_icon"
+            android:title="Móveis"/>
+
+        <item
+            android:id="@+id/nav_telepor"
+            android:icon="@drawable/mixer_icon"
+            android:title="Teleportáteis"/>
+
+        <item
+            android:id="@+id/nav_tab"
+            android:icon="@drawable/tablet_icon"
+            android:title="Tablets"/>
     </group>
 
 </menu>
