@@ -3,14 +3,15 @@ package com.example.menuapp
 import android.app.FragmentManager
 import android.os.Bundle
 import android.view.MenuItem
-import androidx.activity.enableEdgeToEdge
+import android.widget.Toast
+import androidx.activity.addCallback
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
+import androidx.core.view.GravityCompat
 import androidx.core.view.WindowCompat
-import androidx.core.view.WindowInsetsAnimationControllerCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
+import androidx.fragment.app.Fragment
 import com.example.menuapp.databinding.ActivityMainBinding
 import com.google.android.material.navigation.NavigationView
 
@@ -35,9 +36,50 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         toggle.syncState()
 
         binding.navigationDrawer.setNavigationItemSelectedListener(this)
+
+        binding.bottomNavigation.setOnItemSelectedListener { item ->
+            when(item.itemId){
+                R.id.bottom_home ->openFragment(HomeFragment())
+                R.id.bottom_cart ->openFragment(CartFragment())
+                R.id.bottom_profile ->openFragment(ProfileFragment())
+                R.id.bottom_menu ->openFragment(MenuFragment())
+            }
+            true
+        }
+        openFragment((HomeFragment()))
+
+        binding.fab.setOnClickListener {
+            Toast.makeText(this,"Categorias",Toast.LENGTH_SHORT).show()
+        }
+
+        onBackPressedDispatcher.addCallback(this){
+            if(binding.drawerLayout.isDrawerOpen(GravityCompat.START)){
+                binding.drawerLayout.closeDrawer(GravityCompat.START)
+            }else{
+                finish()
+            }
+        }
+
     }
 
-    override fun onNavigationItemSelected(p0: MenuItem): Boolean {
-        TODO("Not yet implemented")
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when (item.itemId){
+            R.id.nav_cell ->openFragment(CellFragment())
+            R.id.nav_tv -> openFragment(TvFragment())
+            R.id.nav_tab -> openFragment(TabletFragment())
+            R.id.nav_eletros -> openFragment(EletrosFragment())
+            R.id.nav_info -> openFragment(InforFragment())
+            R.id.nav_ventila -> openFragment(VentilaFragment())
+            R.id.nav_moveis -> openFragment(MoveisFragment())
+            R.id.nav_telepor -> openFragment(TeleporFragment())
+        }
+        binding.drawerLayout.closeDrawer(GravityCompat.START)
+        return true
+    }
+
+    private fun openFragment(fragment: Fragment){
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.fragment_container,fragment)
+        fragmentTransaction.commit()
     }
 }

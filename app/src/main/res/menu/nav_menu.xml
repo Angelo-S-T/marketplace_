@@ -23,7 +23,7 @@
             android:title="Informática"/>
 
         <item
-            android:id="@+id/nav_vetila"
+            android:id="@+id/nav_ventila"
             android:icon="@drawable/snow_icon"
             android:title="Ar e Ventilação"/>
 
